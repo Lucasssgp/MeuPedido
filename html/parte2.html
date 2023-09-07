@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/favicon.svg" type="image/x-icon">
+    <title>Para Você</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Raleway:ital,wght@0,500;0,600;1,400;1,700&display=swap');
+
+        @keyframes typing{
+            from{
+                width: 0;
+            }
+            to{
+                width: 13.7em;
+            }
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-image: url(../img/jardim.jpg);
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text {
+            color: white;
+            margin-top: -45%;
+            font-size: 3em;
+            font-weight: bold;
+            font-family: 'Indie Flower', cursive;
+            animation: typing 3s normal;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .span-namorar {
+            color: red
+        }
+
+
+        #yes {
+            background-color: #fff;
+            color: #ff6961;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #yes:hover {
+            background-color: #ff6961;
+            color: #fff;
+        }
+
+        .no {
+            background-color: #ff6961;
+            color: #fff;
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            left: 0;
+            transition: left 0.3s ease;
+        }
+
+        .cta {
+            gap: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            
+        }
+
+        .cta button {
+            width: 150px;
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta button:hover {
+            background-color: #f22d2d;
+        }
+
+        a {
+            text-decoration: none;
+            color: #666666;
+        }
+
+        .link-voltar{
+            color: #ffffff;
+            position: absolute;
+            bottom: 5px;
+            left: 20px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p class="text">Moça, você quer <span class="span-namorar">namorar</span> comigo?</p>
+    </div>
+
+    <div class="cta">
+        <button id="yes">Sim</button>
+        <button class="no">Não</button>
+    </div>
+
+
+    <a class="link-voltar" href="../html/parte1.html">voltar</a>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        const btn = document.querySelector(".no");
+        let position = 0;
+
+        const moveButton = () => {
+            position = position ? 0 : 150;
+            btn.style.transform = `translate(${position}px, 0px)`;
+            btn.style.transition = "all 0.2s ease";
+        };
+
+        btn.addEventListener("click", moveButton);
+        btn.addEventListener("mouseover", moveButton);
+
+
+        const sim = document.getElementById('yes');
+
+        sim.addEventListener('click', () => {
+            // Configurar Email.js com suas credenciais
+            emailjs.init("qQJi8GnycN967Mag1"); // Substitua "seu_user_id" pelo seu ID de usuário do Email.js
+
+            // Enviar e-mail quando o botão "Sim" for clicado
+            emailjs.send("service_ltw76n3", "template_rxaihcp", {});
+                
+        });
+       
+    </script>
+</body>
+
+</html>
